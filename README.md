@@ -15,10 +15,10 @@ _Live Example: https://solid-start-template.vercel.app_
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
-npm run dev
+yarn run dev
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+yarn run dev -- --open
 ```
 
 ## Building
@@ -26,5 +26,5 @@ npm run dev -- --open
 This uses the [Vercel Adapter](https://github.com/solidjs/solid-start/tree/main/packages/start-vercel) for SolidStart.
 
 ```bash
-npm run build
+yarn run build
 ```

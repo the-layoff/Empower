@@ -13,6 +13,7 @@ worker
 .classpath
 *.launch
 .settings/
+.vscode
 
 # Temp
 gitignore
@@ -20,3 +21,5 @@ gitignore
 # System Files
 .DS_Store
 Thumbs.db
+
+pocket_db

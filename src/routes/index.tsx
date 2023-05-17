@@ -1,18 +1,19 @@
-import Counter from "~/components/Counter";
-import "./index.css";
+import { type JSXElement } from 'solid-js'
+import Counter from '~/components/Counter'
+import './index.css'
 
-export default function Home() {
+export default function Home (): JSXElement {
   return (
     <main>
       <h1>Hello world!</h1>
       <Counter />
       <p>
-        Visit{" "}
+        Visit{' '}
         <a href="https://start.solidjs.com" target="_blank">
           start.solidjs.com
-        </a>{" "}
+        </a>{' '}
         to learn how to build Solid apps.
       </p>
     </main>
-  );
+  )
 }

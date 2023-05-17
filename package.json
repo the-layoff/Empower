@@ -1,24 +1,55 @@
 {
-  "scripts": {
-    "dev": "solid-start dev",
-    "build": "solid-start build",
-    "start": "solid-start start"
-  },
-  "type": "module",
-  "private": true,
-  "devDependencies": {
-    "solid-start-vercel": "^0.2.0",
-    "typescript": "^4.8.3",
-    "vite": "^3.1.0"
-  },
+  "name": "tasks",
+  "version": "1.0.0",
+  "description": "I love new tasks!",
+  "main": "index.js",
+  "author": "Techdeus",
+  "license": "MIT",
   "dependencies": {
-    "@solidjs/meta": "^0.28.2",
-    "@solidjs/router": "^0.5.0",
-    "solid-js": "^1.6.0",
-    "solid-start": "^0.2.0",
-    "undici": "^5.11.0"
+    "@nanostores/query": "^0.1.0",
+    "@nanostores/solid": "0.3.2",
+    "@solidjs/meta": "^0.28.4",
+    "@solidjs/router": "^0.8.2",
+    "axios": "^1.4.0",
+    "nanostores": "^0.8.1",
+    "pocketbase": "^0.14.4",
+    "solid-copy-to-clipboard": "^0.1.0",
+    "solid-js": "^1.7.5",
+    "solid-simple-datepicker": "^1.0.1",
+    "solid-start": "^0.2.26",
+    "solid-toast": "^0.5.0",
+    "undici": "^5.22.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.40.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-solid": "^0.12.1",
+    "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "solid-devtools": "^0.26.0",
+    "solid-start-vercel": "^0.2.26",
+    "tailwindcss": "^3.3.2",
+    "temporal-polyfill": "^0.1.1",
+    "typescript": "*",
+    "vite": "^4.3.5",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "engines": {
-    "node": "16.x"
-  }
+    "node": ">=16"
+  },
+  "scripts": {
+    "dev": "solid-start dev -o  -p 8822 --config ./vite.config.ts --mode true",
+    "build": "solid-start build --config ./vite.config.ts",
+    "start": "solid-start start -o",
+    "run-db": "./pocket_db/pocketbase serve"
+  },
+  "type": "module"
 }
