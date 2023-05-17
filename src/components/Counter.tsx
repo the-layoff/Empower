@@ -1,29 +1,70 @@
-import { createEffect, createSignal, onCleanup, type JSXElement } from 'solid-js'
+import { createSignal, onCleanup, onMount, type JSXElement, type Setter } from 'solid-js'
 import './Counter.css'
 
-export default function Counter (): JSXElement {
-  const [count, setCount] = createSignal(0)
+interface CounterProps {
+  max: number
+  count: number
+  iteration: number
+}
+export default function Counter (props: { count: CounterProps, setCount: Setter<CounterProps> }): JSXElement {
   const [text, setText] = createSignal('Running... ->')
+  const [text2, setText2] = createSignal('Running... ->')
+  const [text3, setText3] = createSignal('Running... ->')
   const [isDone, setIsDone] = createSignal(false)
-  const inc: (num: number) => void = (num: number) => setCount(num + 1)
-  const dec: (num: number) => void = (num: number) => setCount(num - 1)
+  const inc: () => void = () => {
+    const newState = { ...props.count, count: props.count.count + 1 }
+    props.setCount(newState)
+  }
+  const dec: () => void = () => {
+    const newState = { ...props.count, count: props.count.count - 1 }
+    props.setCount(newState)
+  }
 
-  createEffect(() => {
-    const age = setInterval(() => {
-      const maxAge = 100
-      if (count() < maxAge) {
-        setCount(c => c + 1)
+  onMount(() => {
+    const numberInterval = setInterval(() => {
+      const maxAge = props.count.max
+      if (props.count.count < maxAge) {
+        inc()
       } else {
-        setText('Click down to zero')
+        setText('Count: ')
+        setText2(`Click up to ${props.count.max}`)
+        setText3('Click down to zero')
         setIsDone(true)
-        clearInterval(age)
+        clearInterval(numberInterval)
       }
-    }, 50)
-    onCleanup(() => { clearInterval(age) })
+    }, props.count.iteration)
+    onCleanup(() => { clearInterval(numberInterval) })
   })
   return (
-    <button class="increment" disabled={count() <= 0} onClick={() => { isDone() ? dec(count()) : inc(count()) }}>
-      {text()} {count()}
-    </button>
+    <div class="btn-container">
+      <div class="sm-container">
+        <div role="button" class="increment"
+          onClick={(e) => {
+            inc()
+          }}
+        >
+          {text2()}
+        </div>
+        <div>
+          { props.count.count }
+        </div>
+      </div>
+      <div class="sm-container">
+        <div>
+          {props.count.count}
+        </div>
+        <button class="disabled" disabled={true}>
+           {text()}
+        </button>
+      </div>
+      <div class="sm-container">
+        <div class="decrement" onClick={() => { dec() }} >
+          {text3()}
+        </div>
+        <div>
+          {!isDone() ? props.count.count : '0'}
+        </div>
+      </div>
+    </div>
   )
 }

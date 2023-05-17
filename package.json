@@ -46,7 +46,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "dev": "solid-start dev -o  -p 8822 --config ./vite.config.ts --mode true",
+    "dev": "solid-start dev -o  -p 8844 --config ./vite.config.ts --mode true",
     "build": "solid-start build --config ./vite.config.ts",
     "start": "solid-start start -o",
     "run-db": "./pocket_db/pocketbase serve"
